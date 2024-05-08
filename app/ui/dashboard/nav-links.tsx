@@ -6,20 +6,31 @@ import {
 } from '@heroicons/react/24/outline';
 
 import Link from 'next/link';
+
+// usePathname() is a hook
+// turn nav-links.tsx into a Client Component
+// Add React's "use client" directive to the top of the file
 import { usePathname } from 'next/navigation';
+
 import clsx from 'clsx';
 
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
-  { name: 'Home', href: '/dashboard', icon: HomeIcon },
+  { name: 'Home', 
+    href: '/dashboard', 
+    icon: HomeIcon },
   {
     name: 'Invoices',
     href: '/dashboard/invoices',
     icon: DocumentDuplicateIcon,
   },
-  { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
+  { name: 'Customers', 
+    href: '/dashboard/customers', 
+    icon: UserGroupIcon 
+  },
+
 ];
 
 export default function NavLinks() {
@@ -30,9 +41,12 @@ export default function NavLinks() {
         
         const LinkIcon = link.icon;
         return (
+          // USING <Link  -  You should now be able to navigate between the pages without seeing a full refresh. 
           <Link
             key={link.name}
             href={link.href}
+            // To show an active link to indicate to the user what page they are currently on -- if pathname === actual link  link.href
+            // Use clsx library for styling
             className={clsx(
               'flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',
               {

@@ -11,6 +11,13 @@ export default async function InvoicesTable({
   query: string;
   currentPage: number;
 }) {
+
+  // the two props, query and currentPage, 
+  // are passed to the fetchFilteredInvoices() function 
+  // which returns the invoices that match the query.
+
+  // fetchFilteredInvoices() function in data.ts 
+  // returns a maximum of 6 invoices per page, we need to add pagination
   const invoices = await fetchFilteredInvoices(query, currentPage);
 
   return (

@@ -1,3 +1,7 @@
+// Instructions for creating and seeding the invoices, customers, user, revenue tables
+// "seed": "node -r dotenv/config ./scripts/seed.js" is added in package.json
+// RUN - npm run seed
+
 const { db } = require('@vercel/postgres');
 const {
   invoices,
